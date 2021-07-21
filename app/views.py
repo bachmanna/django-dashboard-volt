@@ -15,7 +15,7 @@ def index(request):
     context = {}
     context['segment'] = 'index'
 
-    html_template = loader.get_template( 'index.html' )
+    html_template = loader.get_template( 'dashboard.html' )
     return HttpResponse(html_template.render(context, request))
 
 @login_required(login_url="/login/")
@@ -26,6 +26,7 @@ def pages(request):
     try:
         
         load_template      = request.path.split('/')[-1]
+        print(load_template)
         context['segment'] = load_template
         
         html_template = loader.get_template( load_template )
